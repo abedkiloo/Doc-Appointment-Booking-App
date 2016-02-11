@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">DocBook</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+    <string-array name="DocorPatient">
+        <item>Patient</item>
+        <item>Doctor</item>
+    </string-array>
+    <string name="title_activity_doctors_panel">DoctorsPanel</string>
+    <string name="title_activity_normal_log_in">NormalLogIn</string>
 </resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="#a5cfcf"
+    tools:showIn="@layout/activity_register" tools:context=".Register">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:id="@+id/imageView"
+            android:background="@mipmap/regpic"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewPersonalNames"
+            android:layout_below="@+id/imageView"
+            android:text="Enter your full Names"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp" />
+
+        <EditText
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Enter your full names"
+            android:ems="10"
+            android:id="@+id/editTextPersonalNames"
+            android:layout_below="@+id/TextViewPersonalNames"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Enter your username"
+            android:id="@+id/textView"
+            android:layout_below="@+id/editTextPersonalNames"
+            android:layout_alignLeft="@+id/editTextPersonalNames"
+            android:layout_alignStart="@+id/editTextPersonalNames"
+            android:layout_alignRight="@+id/TextViewPersonalNames"
+            android:layout_alignEnd="@+id/TextViewPersonalNames" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Enter your username"
+            android:ems="10"
+            android:id="@+id/editTextREGUserName"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Enter your email"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/editTextREGUserName"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editTextREGEmail"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:hint="Enter your email" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Enter your password"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/editTextREGEmail"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextREGPassword"
+            android:layout_below="@+id/textView3"
+            android:layout_alignRight="@+id/editTextREGEmail"
+            android:layout_alignEnd="@+id/editTextREGEmail" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Select Whether Doctor or Patient"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/editTextREGPassword"
+            android:layout_centerHorizontal="true" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerDocPatient"
+            android:layout_below="@+id/textView4"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_alignLeft="@+id/editTextREGPassword"
+            android:layout_alignStart="@+id/editTextREGPassword" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnRegister"
+            android:layout_below="@+id/spinnerDocPatient"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:text="Register" />
+    </RelativeLayout>
+</ScrollView>
