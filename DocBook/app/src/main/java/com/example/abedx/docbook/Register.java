@@ -91,7 +91,7 @@ public class Register extends AppCompatActivity {
         }
         else if(selection.trim().equals("Patient"))
         {
-            startActivity(new Intent(Register.this,NormalLogIn.class));
+            startActivity(new Intent(Register.this,PatientLogin.class));
         }
     }
 }

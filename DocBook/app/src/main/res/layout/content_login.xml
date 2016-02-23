@@ -4,12 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_normal_log_in"
-    tools:context="com.example.abedx.docbook.NormalLogIn">
+    tools:showIn="@layout/activity_login" tools:context="com.example.abedx.registration.Login"
+    android:weightSum="1">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextREGPassword" />
+        android:id="@+id/editTextPassword" />
 
     <Button
         android:layout_width="match_parent"
@@ -38,15 +39,11 @@
         android:text="Login"
         android:onClick="btnLogin"
         android:id="@+id/buttonLogin" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not a user Register Here"
-        />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="Not a User Register Here"
         android:onClick="btnRegister"
         android:id="@+id/buttonRegister" />
 </LinearLayout>

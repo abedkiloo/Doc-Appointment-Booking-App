@@ -5,6 +5,39 @@
         <item>Patient</item>
         <item>Doctor</item>
     </string-array>
-    <string name="title_activity_doctors_panel">DoctorsPanel</string>
-    <string name="title_activity_normal_log_in">NormalLogIn</string>
+    <string name="title_activity_doctors_panel">Doctors  Panel</string>
+    <string name="title_activity_patient_log_in">Patients LogIn</string>
+    <string name="string_enter_name">Enter your name</string>
+    <string name="string_enter_email">Enter your username</string>
+    <string name="button_register">Reigister</string>
+    <string name="string_choose_username">Signup User Name</string>
+    <string name="title_activity_view_hospital">View Hospital</string>
+    <string-array name="Counties">
+        <item>Nairobi County</item>
+        <item>Naivasha County</item>
+        <item>Nakuru County</item>
+        <item>Naruk County</item>
+        <item>Mombasa County</item>
+    </string-array>
+    <array name="CountyPics">
+        <item>@android:drawable/ic_menu_set_as</item>
+        <item>@android:drawable/alert_dark_frame</item>
+        <item>@android:drawable/bottom_bar</item>
+        <item>@android:drawable/btn_minus</item>
+        <item>@android:drawable/ic_dialog_alert</item>
+    </array>
+    <string-array name="NumberOFHospital">
+        <item>54</item>
+        <item>51</item>
+        <item>24</item>
+        <item>14</item>
+        <item>44</item>
+    </string-array>
+    <string-array name="MainSites">
+        <item>Kimandi</item>
+        <item>Huna</item>
+        <item>scnxjm</item>
+        <item>1alkfjc4</item>
+        <item>kamf</item>
+    </string-array>
 </resources>
