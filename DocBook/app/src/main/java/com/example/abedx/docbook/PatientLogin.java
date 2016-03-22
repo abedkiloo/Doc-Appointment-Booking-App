@@ -1,5 +1,6 @@
 package com.example.abedx.docbook;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,19 +8,27 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PatientLogin extends AppCompatActivity {
 
-    private static final String LOGIN_URL = "http://10.0.2.2/androidlogin/login.php";
-   // private static final String LOGIN_URL = "http://abed.rapando.co.ke/androidlogin/login.php";
-    public static final String KEY_USERNAME = "username";
-    public static final String KEY_PASSWORD = "password";
+    private static final String LOGIN_URL = "http://10.0.2.2/androidlogin/patientLogin.php";
+    public static final String KEY_USERNAME = "PatUserName";
+    public static final String KEY_PASSWORD = "PatPassword";
 
     private EditText editTextUsername;
     private EditText editTextPassword;
-    private Button buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,48 +50,59 @@ public class PatientLogin extends AppCompatActivity {
     }
 
     public void btnLogin(View view) {
-        //       final ProgressDialog progressDialog = ProgressDialog.show(getApplicationContext(), "Logging in ....", "Please wait...", false, false);
-        startActivity(new Intent(getApplicationContext(), ViewHospital.class));
-       // progressDialog.dismiss();
-//        final String username = editTextUsername.getText().toString().trim();
-//        final String password = editTextPassword.getText().toString().trim();
-//        if (username.equals("") && password.equals("")) {
-//            Toast.makeText(this, "Please enter your username and password combination", Toast.LENGTH_LONG).show();
-//        } else {
-//            final ProgressDialog progressDialog = ProgressDialog.show(this, "Logging in ....", "Please wait...", false, false);
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Toast.makeText(PatientLogin.this, response, Toast.LENGTH_LONG).show();
-//                            if (response.trim().equals("success")) {
-//                                startActivity(new Intent(getApplicationContext(), ViewHospital.class));
-//                                progressDialog.dismiss();
-//
-//                            }
-//                        }
-//
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError volleyError) {
-//                            Toast.makeText(PatientLogin.this, volleyError.toString(), Toast.LENGTH_LONG).show();
-//                            progressDialog.dismiss();
-//                        }
-//                    }) {
-//                @Override
-//                protected Map<String, String> getParams() throws AuthFailureError {
-//                    Map<String, String> params = new HashMap<String, String>();
-//
-//                    params.put(KEY_USERNAME, username);
-//                    params.put(KEY_PASSWORD, password);
-//                    return params;
-//                }
-//            };
-//
-//            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-//            requestQueue.add(stringRequest);
-//        }
+        final String username = editTextUsername.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
+
+        if (username.equals("") ) {
+           editTextUsername.setError("Please enter your User Name");
+        }
+        else if(password.equals(""))
+        {
+           editTextPassword.setError("Please Enter your Password");
+        }
+         else {
+            final ProgressDialog progressDialog = ProgressDialog.show(this, "Logging in ....", "Please wait...", false, false);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("successfully Login")) {
+                                MessageClass.message(getApplicationContext(),response);
+                                progressDialog.dismiss();
+                                startActivity(new Intent(getApplicationContext(), ViewCounties.class));
+                                editTextUsername.setText("");
+                                editTextPassword.setText("");
+
+
+                            }
+                            else if (response.trim().equals("Failed.Please register if you are not a user"))
+                            {
+                                MessageClass.message(getApplicationContext(),response);
+                                progressDialog.dismiss();
+                            }
+                        }
+
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            progressDialog.dismiss();
+                            MessageClass.message(getApplicationContext(),volleyError.toString());
+                        }
+                    }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put(KEY_USERNAME, username);
+                    params.put(KEY_PASSWORD, password);
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+        }
 
     }
 

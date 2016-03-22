@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.abedx.docbook" >
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".PatientLogin"
-            android:label="@string/app_name"
+            android:name=".ViewCounties"
+            android:label="@string/registeractivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,18 +22,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DoctorsPanel"
+            android:name=".Register"
             android:label="@string/title_activity_doctors_panel"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".Register"
-            android:label="@string/title_activity_patient_log_in"
+            android:name=".PatientLogin"
+            android:label="@string/title_activity_view_hospital"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Register" />
+        </activity>
+        <activity
+            android:name=".CountyHospital"
+            android:label="@string/title_activity_county_hospital"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ViewHospital"
-            android:label="@string/title_activity_view_hospital"
+            android:name=".DoctorCatergoriesFragment"
+            android:label="@string/title_activity_doctor_catergories"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".DoctorsPanel"
+            android:label="@string/title_activity_doctor_catergories"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

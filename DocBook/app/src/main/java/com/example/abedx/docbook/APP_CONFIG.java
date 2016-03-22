@@ -2,6 +2,7 @@ package com.example.abedx.docbook;
 
 import android.app.Application;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -10,23 +11,37 @@ import com.android.volley.toolbox.Volley;
  */
 public class APP_CONFIG extends Application {
     private static APP_CONFIG mInstance;
-    private static RequestQueue mRequest;
+    private static RequestQueue mRequestQueue;
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
     }
 
-    public synchronized APP_CONFIG getInstance() {
+    public static synchronized APP_CONFIG getInstance() {
         return mInstance;
-
     }
-    public RequestQueue getRequest()
-    {
-        if(mRequest==null)
-        {
-            mRequest= Volley.newRequestQueue(getApplicationContext());
+    public RequestQueue getReqQueue() {
+        if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-        return mRequest;
+
+        return mRequestQueue;
+    }
+
+    public <T> void addToReqQueue(Request<T> req, String tag) {
+
+        getReqQueue().add(req);
+    }
+
+    public <T> void addToReqQueue(Request<T> req) {
+
+        getReqQueue().add(req);
+    }
+
+    public void cancelPendingReq(Object tag) {
+        if (mRequestQueue != null) {
+            mRequestQueue.cancelAll(tag);
+        }
     }
 }

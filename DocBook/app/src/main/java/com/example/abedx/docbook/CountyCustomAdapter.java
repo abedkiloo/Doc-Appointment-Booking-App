@@ -55,7 +55,9 @@ public class CountyCustomAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) classcontext.getSystemService(AppCompatActivity.LAYOUT_INFLATER_SERVICE);
         viewHolder = new ViewHolder();
         if (convertView == null) {
+            //inflater with the custom layout that was created containing the custom view
             convertView = layoutInflater.inflate(R.layout.county_lists, null);
+            //get reference of the members of the custom list to be made and set the to the private class view holder values
             viewHolder.HosptalName = (TextView) convertView.findViewById(R.id.member_name);
             viewHolder.countyPic = (ImageView) convertView.findViewById(R.id.profile_pic);
             viewHolder.NumberOfHospital = (TextView) convertView.findViewById(R.id.contact_type);

@@ -12,6 +12,7 @@
     <string name="button_register">Reigister</string>
     <string name="string_choose_username">Signup User Name</string>
     <string name="title_activity_view_hospital">View Hospital</string>
+    <string name="registeractivity">Registeration</string>
     <string-array name="Counties">
         <item>Nairobi County</item>
         <item>Naivasha County</item>
@@ -24,7 +25,7 @@
         <item>@android:drawable/alert_dark_frame</item>
         <item>@android:drawable/bottom_bar</item>
         <item>@android:drawable/btn_minus</item>
-        <item>@android:drawable/ic_dialog_alert</item>
+        <item>@mipmap/mombasa</item>
     </array>
     <string-array name="NumberOFHospital">
         <item>54</item>
@@ -40,4 +41,9 @@
         <item>1alkfjc4</item>
         <item>kamf</item>
     </string-array>
+    <string name="title_activity_county_hospital">CountyHospital</string>
+    <string name="title_activity_doctor_catergories">DoctorCatergories</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

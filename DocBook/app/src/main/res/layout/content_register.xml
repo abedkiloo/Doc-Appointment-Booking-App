@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
+        <!--ImageView
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:id="@+id/imageView"
@@ -21,27 +21,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" /-->
 
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewPersonalNames"
-            android:layout_below="@+id/imageView"
-            android:text="Enter your full Names"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="49dp" />
 
-        <EditText
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Enter your full names"
-            android:ems="10"
-            android:id="@+id/editTextPersonalNames"
-            android:layout_below="@+id/TextViewPersonalNames"
-            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,85 +31,85 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Enter your username"
             android:id="@+id/textView"
-            android:layout_below="@+id/editTextPersonalNames"
-            android:layout_alignLeft="@+id/editTextPersonalNames"
-            android:layout_alignStart="@+id/editTextPersonalNames"
-            android:layout_alignRight="@+id/TextViewPersonalNames"
-            android:layout_alignEnd="@+id/TextViewPersonalNames" />
+             />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:hint="Enter your username"
             android:ems="10"
             android:id="@+id/editTextREGUserName"
             android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Enter your email"
             android:id="@+id/textView2"
             android:layout_below="@+id/editTextREGUserName"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/editTextREGEmail"
+            android:hint="Enter your email"
             android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true"
-            android:hint="Enter your email" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Enter your password"
             android:id="@+id/textView3"
             android:layout_below="@+id/editTextREGEmail"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/editTextREGPassword"
             android:layout_below="@+id/textView3"
-            android:layout_alignRight="@+id/editTextREGEmail"
-            android:layout_alignEnd="@+id/editTextREGEmail" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Select Whether Doctor or Patient"
+            android:text="Select whether Doctor or Patient"
             android:id="@+id/textView4"
             android:layout_below="@+id/editTextREGPassword"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerDocPatient"
             android:layout_below="@+id/textView4"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView"
-            android:layout_alignLeft="@+id/editTextREGPassword"
-            android:layout_alignStart="@+id/editTextREGPassword" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="btnRegister"
+            android:text="Register"
             android:layout_below="@+id/spinnerDocPatient"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:text="Register" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 </ScrollView>
