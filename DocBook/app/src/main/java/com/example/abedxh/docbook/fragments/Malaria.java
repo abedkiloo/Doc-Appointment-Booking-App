@@ -5,18 +5,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.example.abedx.docbook.R;
 
-/**
- * Created by abedx on 3/21/2016.
- */
-public class FragmentDoctorCatergoryOne extends Fragment{
-   private ListView doctorListView;
+public class Malaria extends Fragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.doctorcatergoryone,container,false);
+        View rootView=inflater.inflate(R.layout.activity_malaria,container,false);
         return rootView;
     }
+
 }

@@ -2,22 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Import" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+        <item android:id="@+id/Diabetes" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Diabetes" />
+        <item android:id="@+id/FoodPoisoning" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Food Poisoning" />
+        <item android:id="@+id/Malaria" android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="Malaria" />
+        <item android:id="@+id/Respiratory" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Respiratory" />
+        <item android:id="@+id/Stroke_Heart_Diseases" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Stroke/Heart Diseases" />
 
-    <item android:title="Communicate">
+    </group>
+    <item android:title="Pharmacy">
         <menu>
-            <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
-                android:title="Share" />
-            <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
-                android:title="Send" />
+            <item android:id="@+id/Pharmacies" android:icon="@android:drawable/ic_menu_share"
+                android:title="Pharmacies" />
+        </menu>
+    </item>
+
+    <item android:title="Register and Login">
+        <menu>
+            <item android:id="@+id/Login" android:icon="@android:drawable/ic_menu_share"
+                android:title="Login" />
+            <item android:id="@+id/Register" android:icon="@android:drawable/ic_menu_send"
+                android:title="Register" />
         </menu>
     </item>
 

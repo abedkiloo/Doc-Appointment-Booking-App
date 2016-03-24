@@ -57,34 +57,42 @@ public class CountyHospital extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         getcounty();
 
 
     }
 
     private void getcounty() {
-        Bundle getCounty=getIntent().getExtras();
-        final String county=getCounty.getString("COUNTY");
-        Log.d("BUNDEL COUNTY",county);
-        final ProgressDialog countyProgress = ProgressDialog.show(this, "Fetch hospital of" + county, "Please wait...", false, false);
+       // final Bundle getCounty=getIntent().getExtras();
+       // final String county=getCounty.getString("COUNTY");
+
+       final ProgressDialog countyProgress = ProgressDialog.show(this, "Fetch hospital of" , "Please wait...", false, false);
         StringRequest countyReq = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                countyProgress.dismiss();
+                //MessageClass.message(getApplicationContext(),s);
+               // Log.d("BUNDEL COUNTY", county);
+                MessageClass.message(getApplicationContext(),s);
+                 showHospitals();
+                Log.d("S",s);
+               // countyProgress.dismiss();
             }
         },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        countyProgress.dismiss();
-                        showHospitals();
+
+                     //   countyProgress.dismiss();
+
 
                     }
                 }) {
             @Override
-            protected Map<String, String> getPostParams() throws AuthFailureError {
+            protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put(KEY_county, county);
+               // params.put(KEY_county, county);
+               // Log.d("PARAMS",params.put(KEY_county, county));
                 return params;
             }
         };
@@ -99,7 +107,7 @@ public class CountyHospital extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
-                    JSONArray jsonArray = jsonObject.getJSONArray("Nairobi County");
+                    JSONArray jsonArray = jsonObject.getJSONArray("County Hospital");
                     list = new ArrayList<HospitalNames>();
                     HospitalNames ghospitalItems = null;
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -111,7 +119,7 @@ public class CountyHospital extends AppCompatActivity {
                         list.add(ghospitalItems);
                         progressDialog1.dismiss();
                         // MessageClass.message(getApplicationContext(),"HOSP is"+jsonObject1.getString(KEY_HospitalName));
-                        Log.d("HOSP", jsonObject1.getString(KEY_HospitalName).toString());
+                        Log.d("HOSP", jsonObject1.getString(KEY_HospitalName));
                     }
                     CountyHospitalCSList countyHospitalCSList = new CountyHospitalCSList(getApplicationContext(), list);
                     hospitalListView.setAdapter(countyHospitalCSList);

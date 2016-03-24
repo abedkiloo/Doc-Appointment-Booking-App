@@ -5,16 +5,17 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#9d3bda"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_doctor_catergories"
-    tools:context="com.example.abedx.docbook.DoctorCatergoriesFragment">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    tools:showIn="@layout/activity_diabetes" tools:context="com.example.abedxh.docbook.fragments.Diabetes">
 
-        android:id="@+id/catergories_frame">
 
-    </FrameLayout>
-
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewDiabetes"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

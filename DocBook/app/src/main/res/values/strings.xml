@@ -46,4 +46,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_diabetes">Diabetes</string>
+    <string name="title_activity_food_poisoning">FoodPoisoning</string>
+    <string name="title_activity_malaria">Malaria</string>
+    <string name="title_activity_respiratory">Respiratory</string>
+    <string name="title_activity_stroke__heart__disease">Stroke_Heart_Disease</string>
+    <string name="title_activity_pharmacies">Pharmacies</string>
 </resources>

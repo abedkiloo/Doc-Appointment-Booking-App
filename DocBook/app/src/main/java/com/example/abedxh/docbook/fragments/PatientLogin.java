@@ -1,13 +1,13 @@
-package com.example.abedx.docbook;
+package com.example.abedxh.docbook.fragments;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
@@ -17,41 +17,49 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.abedx.docbook.MessageClass;
+import com.example.abedx.docbook.R;
+import com.example.abedx.docbook.ViewCounties;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PatientLogin extends AppCompatActivity {
+public class PatientLogin extends Fragment {
 
-    private static final String LOGIN_URL = "http://10.0.2.2/androidlogin/patientLogin.php";
-    public static final String KEY_USERNAME = "PatUserName";
-    public static final String KEY_PASSWORD = "PatPassword";
+    private static final String LOGIN_URL = "http://mc.rapando.co.ke/src/php/requests.php";
+    public static final String KEY_USERNAME = "uname";
+    public static final String KEY_PASSWORD = "pass";
+    public static final String KEY_REQ = "req";
 
     private EditText editTextUsername;
     private EditText editTextPassword;
+    private Button btnLogin;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_login, container, false);
+        editTextUsername = (EditText) rootView.findViewById(R.id.editTextUsername);
+        editTextPassword = (EditText) rootView.findViewById(R.id.editTextPassword);
+        btnLogin=(Button)rootView.findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                Login();
             }
         });
+        return rootView;
     }
 
-    public void btnLogin(View view) {
+
+    public void Login() {
         final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
+        final String Ureq="patientLogin";
 
         if (username.equals("") ) {
            editTextUsername.setError("Please enter your User Name");
@@ -61,15 +69,15 @@ public class PatientLogin extends AppCompatActivity {
            editTextPassword.setError("Please Enter your Password");
         }
          else {
-            final ProgressDialog progressDialog = ProgressDialog.show(this, "Logging in ....", "Please wait...", false, false);
+            final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Logging in ....", "Please wait...", false, false);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             if (response.trim().equals("successfully Login")) {
-                                MessageClass.message(getApplicationContext(),response);
+                                MessageClass.message(getActivity(), response);
                                 progressDialog.dismiss();
-                                startActivity(new Intent(getApplicationContext(), ViewCounties.class));
+                                startActivity(new Intent(getActivity(), ViewCounties.class));
                                 editTextUsername.setText("");
                                 editTextPassword.setText("");
 
@@ -77,7 +85,7 @@ public class PatientLogin extends AppCompatActivity {
                             }
                             else if (response.trim().equals("Failed.Please register if you are not a user"))
                             {
-                                MessageClass.message(getApplicationContext(),response);
+                                MessageClass.message(getActivity(),response);
                                 progressDialog.dismiss();
                             }
                         }
@@ -87,27 +95,27 @@ public class PatientLogin extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
                             progressDialog.dismiss();
-                            MessageClass.message(getApplicationContext(),volleyError.toString());
+                            MessageClass.message(getActivity(),volleyError.toString());
                         }
                     }) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
-
                     params.put(KEY_USERNAME, username);
                     params.put(KEY_PASSWORD, password);
+                    params.put(KEY_REQ,Ureq);
                     return params;
                 }
             };
 
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
             requestQueue.add(stringRequest);
         }
 
     }
 
     public void btnRegister(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(getActivity(), Register.class));
 
     }
 
