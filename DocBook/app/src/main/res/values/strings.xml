@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DocBook</string>
+    <string name="app_name">medicare</string>
     <string name="action_settings">Settings</string>
     <string-array name="DocorPatient">
         <item>Patient</item>
@@ -12,7 +12,7 @@
     <string name="button_register">Reigister</string>
     <string name="string_choose_username">Signup User Name</string>
     <string name="title_activity_view_hospital">View Hospital</string>
-    <string name="registeractivity">Registeration</string>
+    <string name="registeractivity">medicare</string>
     <string-array name="Counties">
         <item>Nairobi County</item>
         <item>Naivasha County</item>
@@ -52,4 +52,5 @@
     <string name="title_activity_respiratory">Respiratory</string>
     <string name="title_activity_stroke__heart__disease">Stroke_Heart_Disease</string>
     <string name="title_activity_pharmacies">Pharmacies</string>
+    <string name="title_activity_book_appointment">BookAppointment</string>
 </resources>

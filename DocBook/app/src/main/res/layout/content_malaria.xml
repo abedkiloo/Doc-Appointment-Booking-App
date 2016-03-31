@@ -9,16 +9,12 @@
     android:background="#9d3bda"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_malaria"
-    tools:context="com.example.abedxh.docbook.fragments.Malaria">
+    tools:context="com.unifysoftech.abedxh.docbook.fragments.Malaria">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="MALARIA"
-        android:id="@+id/textView7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/listViewDiabetes"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

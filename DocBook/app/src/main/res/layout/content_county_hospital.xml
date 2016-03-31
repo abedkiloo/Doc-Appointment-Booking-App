@@ -9,7 +9,7 @@
     android:background="#9d3bda"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_county_hospital"
-    tools:context="com.example.abedx.docbook.CountyHospital">
+    tools:context="com.unifysoftech.abedx.medicare.CountyHospital">
 
     <ListView
         android:layout_width="wrap_content"

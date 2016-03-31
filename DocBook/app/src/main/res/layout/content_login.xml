@@ -9,7 +9,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#9d3bda"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_login" tools:context="com.example.abedx.registration.Login"
+    tools:showIn="@layout/activity_login" tools:context="com.unifysoftech.abedx.registration.Login"
     android:weightSum="1">
 
     <TextView
@@ -44,8 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Not a User Register Here"
-        android:onClick="btnRegister"
-        android:id="@+id/buttonRegister" />
+        android:id="@+id/btnRegister" />
 
     <TextView
         android:layout_width="match_parent"

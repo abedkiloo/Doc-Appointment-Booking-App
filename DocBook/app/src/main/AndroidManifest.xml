@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.abedx.docbook" >
+    package="com.unifysoftech.abedx.medicare" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+    <uses-permission android:name="android.permission.STATUS_BAR_SERVICE" android:protectionLevel="signature" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/medicareicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DoctorCatergoriesFragment"
+            android:name="com.unifysoftech.abedx.medicare.DoctorCatergoriesFragment"
             android:label="@string/registeractivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -22,61 +23,66 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.Register"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.Register"
             android:label="@string/title_activity_doctors_panel"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.PatientLogin"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.PatientLogin"
             android:label="@string/title_activity_view_hospital"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.abedxh.docbook.fragments.Register" />
+                android:value="com.unifysoftech.abedxh.docbook.fragments.Register" />
         </activity>
         <activity
-            android:name=".CountyHospital"
+            android:name="com.unifysoftech.abedx.medicare.CountyHospital"
             android:label="@string/title_activity_county_hospital"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ViewCounties"
+            android:name="com.unifysoftech.abedx.medicare.ViewCounties"
             android:label="@string/title_activity_doctor_catergories"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".DoctorsPanel"
+            android:name="com.unifysoftech.abedx.medicare.DoctorsPanel"
             android:label="@string/title_activity_doctor_catergories"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.Diabetes"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.Diabetes"
             android:label="@string/title_activity_diabetes"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.FoodPoisoning"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.FoodPoisoning"
             android:label="@string/title_activity_food_poisoning"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.Malaria"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.Malaria"
             android:label="@string/title_activity_malaria"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.Respiratory"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.Respiratory"
             android:label="@string/title_activity_respiratory"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.example.abedxh.docbook.fragments.Stroke_Heart_Disease"
+            android:name="com.unifysoftech.abedxh.docbook.fragments.Stroke_Heart_Disease"
             android:label="@string/title_activity_stroke__heart__disease"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".Pharmacies"
+            android:name="com.unifysoftech.abedx.medicare.Pharmacies"
             android:label="@string/title_activity_pharmacies"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.unifysoftech.abedx.medicare.BookAppointment"
+            android:label="@string/title_activity_book_appointment"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

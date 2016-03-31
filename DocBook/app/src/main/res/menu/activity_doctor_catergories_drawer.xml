@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <group android:checkableBehavior="single">
+
         <item android:id="@+id/Diabetes" android:icon="@android:drawable/ic_menu_camera"
             android:title="Diabetes" />
         <item android:id="@+id/FoodPoisoning" android:icon="@android:drawable/ic_menu_gallery"
@@ -14,6 +16,7 @@
             android:title="Stroke/Heart Diseases" />
 
     </group>
+
     <item android:title="Pharmacy">
         <menu>
             <item android:id="@+id/Pharmacies" android:icon="@android:drawable/ic_menu_share"

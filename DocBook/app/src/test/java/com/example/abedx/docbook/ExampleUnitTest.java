@@ -1,4 +1,4 @@
-package com.example.abedx.docbook;
+package com.unifysoftech.abedx.medicare;
 
 import org.junit.Test;
 

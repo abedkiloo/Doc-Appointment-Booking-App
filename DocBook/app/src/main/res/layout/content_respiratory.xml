@@ -9,16 +9,12 @@
     android:background="#9d3bda"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_respiratory"
-    tools:context="com.example.abedxh.docbook.fragments.Respiratory">
+    tools:context="com.unifysoftech.abedxh.docbook.fragments.Respiratory">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Respiratory"
-        android:id="@+id/textView10"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/listViewDiabetes"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
