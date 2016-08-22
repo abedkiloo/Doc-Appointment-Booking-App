@@ -3,7 +3,7 @@ package com.unifysoftech.abedx.medicare;
 /**
  * Created by abedx on 3/24/2016.
  */
-public class GetySetterDoctor {
+public class GetterSetterDoctor {
     public String getDoctorId() {
         return DoctorId;
     }
@@ -35,11 +35,29 @@ public class GetySetterDoctor {
     public void setDocHospitals(String docHospitals) {
         DocHospitals = docHospitals;
     }
+    public String getDISEASEID() {
+        return DISEASEID;
+    }
+
+    public void setDISEASEID(String DISEASEID) {
+        this.DISEASEID = DISEASEID;
+    }
+
+
+    public String getDISEASESpecalisation() {
+        return DISEASESpecalisation;
+    }
+
+    public void setDISEASESpecalisation(String DISEASESpecalisation) {
+        this.DISEASESpecalisation = DISEASESpecalisation;
+    }
 
     public String DoctorId;
     public String DocName;
     public String DocOtherDetails;
     public String DocHospitals;
+    public String DISEASEID;
+    public String DISEASESpecalisation;
 
 
 }

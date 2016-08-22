@@ -6,6 +6,8 @@
     android:layout_height="match_parent" android:fitsSystemWindows="true" tools:context=".Register">
 
 
+    <!--include layout="@layout/content_doctors_panel" /-->
+
     <include layout="@layout/content_register" />
 
 

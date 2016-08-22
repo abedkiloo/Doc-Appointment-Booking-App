@@ -5,7 +5,7 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#9d3bda"
+    android:background="@android:color/background_light"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_stroke__heart__disease"
@@ -17,5 +17,8 @@
         android:id="@+id/listViewDiabetes"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#bcc8e2"
+        android:divider="@android:color/background_light"
+        android:dividerHeight="4dp"/>
 </RelativeLayout>

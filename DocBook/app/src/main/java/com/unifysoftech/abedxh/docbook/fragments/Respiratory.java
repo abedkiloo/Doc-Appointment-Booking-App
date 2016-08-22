@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,7 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.unifysoftech.abedx.medicare.BookAppointment;
 import com.unifysoftech.abedx.medicare.CustomDoctor;
-import com.unifysoftech.abedx.medicare.GetySetterDoctor;
+import com.unifysoftech.abedx.medicare.GetterSetterDoctor;
 import com.unifysoftech.abedx.medicare.MessageClass;
 import com.unifysoftech.abedx.medicare.R;
 
@@ -36,14 +37,19 @@ import java.util.Map;
 
 public class Respiratory extends Fragment {
     public ListView doctorListView;
-    public static String URL = "http://mc.rapando.co.ke/src/php/diseases.php?disease=Respiratory";
+    //public static String URL = "http://10.0.2.2/medicare/diseases.php?disease=Respiratory";
+    public static String URL = "http://abedkiloo.com/medicare/?disease=Respiratory";
     public static String KEY_req = "req";
     public static String Ureq = "viewDocByDisease";
     public static String Key_DiseaseKey = "diseasem";
     public static String Key_DiseaseName = "Diabetes";
-    public List<GetySetterDoctor> list = null;
+    public List<GetterSetterDoctor> list = null;
     public static String Key_doctorName = "doctorName";
     public static String Key_Hospital = "hospital";
+    public static  ProgressDialog progressDialog1;
+    public static String Key_DOCID = "id";
+    public static String Key_DISEASEID = "diseaseID";
+    public static String Key_DISEASeSpecialisation="disease";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,14 +74,14 @@ public class Respiratory extends Fragment {
     }
 
     private void getDoctor() {
-        final ProgressDialog progressDialog1 = ProgressDialog.show(getActivity(), "Getting Doctors For you  ....", "Please wait ...", false, false);
+       progressDialog1 = ProgressDialog.show(getActivity(), "Getting Doctors For you  ....", "Please wait ...", false, false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("DIABETES", response);
                 showDoctors();
-                progressDialog1.dismiss();
+
             }
         },
                 new Response.ErrorListener() {
@@ -98,28 +104,50 @@ public class Respiratory extends Fragment {
     }
 
     private void showDoctors() {
-        final ProgressDialog progressDialog1 = ProgressDialog.show(getActivity(), "Getting Doctors List ....", "Please wait ...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
                     JSONArray jsonArray = jsonObject.getJSONArray("disease");
-                    list = new ArrayList<GetySetterDoctor>();
-                    GetySetterDoctor getySetterDoctor = null;
+                    list = new ArrayList<GetterSetterDoctor>();
+                    GetterSetterDoctor getterSetterDoctor = null;
                     Log.d("Exec","Exec");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        getySetterDoctor = new GetySetterDoctor();
+                        getterSetterDoctor = new GetterSetterDoctor();
                         // Log.d("Exec",jsonObject1.toString());
-                        getySetterDoctor.setDocName(jsonObject1.getString(Key_doctorName));
-                        getySetterDoctor.setDocHospitals(jsonObject1.getString(Key_Hospital));
-                        list.add(getySetterDoctor);
+                        getterSetterDoctor.setDoctorId(jsonObject1.getString(Key_DOCID));
+                        getterSetterDoctor.setDocName(jsonObject1.getString(Key_doctorName));
+                        getterSetterDoctor.setDocHospitals(jsonObject1.getString(Key_Hospital));
+                        getterSetterDoctor.setDISEASEID(jsonObject1.getString(Key_DISEASEID));
+                        getterSetterDoctor.setDISEASESpecalisation(jsonObject1.getString(Key_DISEASeSpecialisation));
+                        list.add(getterSetterDoctor);
                         progressDialog1.dismiss();
                         // MessageClass.message(getApplicationContext(),"HOSP is"+jsonObject1.getString(KEY_HospitalName));
                         Log.d("DIADOC", jsonObject1.getString(Key_doctorName));
                     }
                     CustomDoctor customDoctor = new CustomDoctor(getActivity(), list);
                     doctorListView.setAdapter(customDoctor);
+                    doctorListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            TextView tvdoc = (TextView) view.findViewById(R.id.doctorName7);
+                            TextView tvdocID = (TextView) view.findViewById(R.id.DOCTORID);
+                            TextView tvdiseaseID = (TextView) view.findViewById(R.id.DISEASEID);
+                            String bookingDoctor = tvdoc.getText().toString();
+                            String bookingDoctorId=tvdocID.getText().toString();
+                            String bookingDiseaseID=tvdiseaseID.getText().toString();
+                            Bundle docNameBundle = new Bundle();
+                            docNameBundle.putString("BOOKING DOCTOR NAME", bookingDoctor);
+                            docNameBundle.putString("BOOKING DOCTOR ID",bookingDoctorId);
+                            docNameBundle.putString("BOOKING DISEASE ID",bookingDiseaseID);
+                            docNameBundle.putString("BOOKING DISEASE NAME" ,"Respiratory");
+                            Intent myBookActivity = new Intent(getActivity(), BookAppointment.class);
+                            myBookActivity.putExtras(docNameBundle);
+                            startActivity(myBookActivity);
+                        }
+                    });
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

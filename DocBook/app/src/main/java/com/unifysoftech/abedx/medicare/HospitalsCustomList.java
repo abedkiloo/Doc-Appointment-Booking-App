@@ -49,25 +49,25 @@ public class HospitalsCustomList extends BaseAdapter {
 
     @NonNull
     private View getView(int position, View convertView) {
-        HospitalTV hospitalTV=new HospitalTV();
+        Hospital objhospital =new Hospital();
         LayoutInflater layoutInflater=(LayoutInflater)classContex.getSystemService(AppCompatActivity.LAYOUT_INFLATER_SERVICE);
         if(convertView==null)
         {
         convertView=layoutInflater.inflate(R.layout.hospitallist,null);
-            hospitalTV.HospitalTV=(TextView)convertView.findViewById(R.id.HOSPITALNAME);
-            convertView.setTag(hospitalTV);
+            objhospital.HospitalTV=(TextView)convertView.findViewById(R.id.HOSPITALNAME);
+            convertView.setTag(objhospital);
         }
         else
         {
-            hospitalTV=(HospitalTV)convertView.getTag();
+            objhospital =(Hospital)convertView.getTag();
         }
         HospitalNames hospitalNames=LhospitalNames.get(position);
-        hospitalTV.HospitalTV.setText(hospitalNames.getHosptalName());
+        objhospital.HospitalTV.setText(hospitalNames.getHosptalName());
         return convertView;
     }
 
 
-    class HospitalTV
+    class Hospital
     {
         TextView HospitalTV;
     }

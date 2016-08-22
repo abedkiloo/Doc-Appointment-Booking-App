@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Doctor Name"
         android:id="@+id/doctorName7"
         android:layout_weight="0.05" />
 
@@ -16,7 +16,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text="Hospital Name"
         android:id="@+id/doctorHospitalName"
         android:layout_weight="0.05" />
+
+    <TextView
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Doctor Specialisation"
+        android:id="@+id/customDoctorSpecilasation" />
+
+    <TextView
+        android:layout_width="57dp"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="DOCTORID"
+        android:id="@+id/DOCTORID"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="DISEASE"
+        android:id="@+id/DISEASEID"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.05"
+        android:visibility="gone" />
+
 </LinearLayout>

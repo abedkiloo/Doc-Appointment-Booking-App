@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -31,19 +32,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends Fragment {
-    private static Spinner spinnerDocPatient;
     private static EditText editUserName;
     private static EditText editEmail;
     private static EditText editPassword;
-    private static ArrayAdapter docpatinetAdapter;
-    private static String selection = null;
-    private static String RegisterURL ="http://mc.rapando.co.ke/src/php/requests.php";
+   // private static String RegisterURL ="http://10.0.2.2/medicare/registeruser.php";
+   private static String RegisterURL ="http://abedkiloo.com/medicare/registeruser.php";
     private static String Key_UserName = "uname";
     private static String Key_UserEmail = "email";
     private static String Key_UserPassword = "pass";
     private static View rootView;
     private static Button btnRegister;
-    private String Key_req="req";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    }
@@ -54,52 +52,23 @@ public class Register extends Fragment {
         return rootView;
     }
     private void intilization() {
-//        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
         //implemtation of login
         btnRegister=(Button)rootView.findViewById(R.id.btnRegister);
         editUserName = (EditText)rootView. findViewById(R.id.editTextREGUserName);
         editEmail = (EditText) rootView.findViewById(R.id.editTextREGEmail);
         editPassword = (EditText) rootView.findViewById(R.id.editTextREGPassword);
-        spinnerDocPatient = (Spinner)rootView.findViewById(R.id.spinnerDocPatient);
-        //intialize the adapter created from an string resource
-        docpatinetAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.DocorPatient, android.R.layout.simple_list_item_1);
-        //set the spinner to be a drop down
-        docpatinetAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-        //let the spinner addapt the docpatinetAdapter
-        spinnerDocPatient.setAdapter(docpatinetAdapter);
-        spinnerDocPatient.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selection = parent.getItemAtPosition(position).toString();
-                // Toast.makeText(getApplicationContext(), "You will registered as " + selection, Toast.LENGTH_LONG).show();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Registering();
+                //MessageClass.message(getActivity(),"Register");
+               registerPatient();
             }
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_register, menu);
-//        return true;
-//    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -116,61 +85,51 @@ public class Register extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Registering() {
-        String doc = editUserName.getText().toString().trim();
-        if (selection.trim().equals("Doctor")) {
-            Intent intent = new Intent(getActivity(), DoctorsPanel.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("DOCTOR USER NAME", doc);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        } else if (selection.trim().equals("Patient")) {
-            registerPatient();
-
-        }
-    }
-
     private void registerPatient() {
-//        Intent intent=new Intent(getActivity(),DoctorCatergoriesFragment.class);
-//        intent.putExtra("Fragment","Malaria");
-//        startActivity(intent);
+       // Intent intent=new Intent(getActivity(),DoctorCatergoriesFragment.class);
+        //intent.putExtra("Fragment","Fragment");
+        //startActivity(intent);
 
         final String UName = editUserName.getText().toString().trim();
         final String UEmail = editEmail.getText().toString().trim();
         final String UPassword = editPassword.getText().toString().trim();
-        final String Ureq="addPatient";
+        Log.d("LOGINDETIALS",UName+UEmail+UPassword);
+
         if (UName.equals("")) {
             editUserName.setError("Please Enter your User Name");
         } else if (UEmail.equals("")) {
             editEmail.setError("Please Enter your email");
         } else if (UPassword.equals("")) {
-            editPassword.setError("Please enter your Psssword");
+            editPassword.setError("Please enter your Password");
         } else {
             final ProgressDialog regitering=ProgressDialog.show(getActivity(),"Registering New User","Please wait .....",false,false);
-            StringRequest register = new StringRequest(Request.Method.POST, RegisterURL, new Response.Listener<String>() {
+            final StringRequest register = new StringRequest(Request.Method.POST, RegisterURL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String s) {
-
-                    regitering.dismiss();
-                    editUserName.setText("");
-                    editPassword.setText("");
-                    editEmail.setText("");
-                    if(s.trim().equals("1"))
+                    if(s.trim().equals("success"))
                     {
                         MessageClass.message(getActivity(), "Registered");
                         Log.d("RESULT", s);
-                        startActivity(new Intent(getActivity(), DoctorCatergoriesFragment.class));
+                        editUserName.setText("");
+                        editPassword.setText("");
+                        editEmail.setText("");
+                        regitering.dismiss();
+
+                         Intent intent=new Intent(getActivity(),DoctorCatergoriesFragment.class);
+                        intent.putExtra("Fragment","Login");
+                        startActivity(intent);
                     }
-                    else if(s.trim().equals("0"))
+                    else if(s.trim().equals("failed"))
                     {
                        MessageClass.message(getActivity(),"Failed Try again please");
+                        regitering.dismiss();
                     }
                 }
             },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-                            MessageClass.message(getActivity(),volleyError.toString());
+                            MessageClass.message(getActivity(),"Network Error");
                             Log.d("REGISTER ERROR","Failed"+volleyError.toString());
                             regitering.dismiss();
                         }
@@ -178,7 +137,6 @@ public class Register extends Fragment {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                    Map<String,String> params=new HashMap<String,String>();
-                    params.put(Key_req,Ureq);
                     params.put(Key_UserName,UName);
                     params.put(Key_UserEmail,UEmail);
                     params.put(Key_UserPassword,UPassword);

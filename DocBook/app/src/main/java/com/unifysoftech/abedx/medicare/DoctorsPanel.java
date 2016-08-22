@@ -87,7 +87,7 @@ public class DoctorsPanel extends AppCompatActivity {
         doc_Otherdetails = (EditText) findViewById(R.id.editOtherDetails);
         doc_free = (EditText) findViewById(R.id.editDay_Time);
         HospitalName = (TextView) findViewById(R.id.HOSPITALNAME);
-        hospSpinner = (Spinner) findViewById(R.id.spinnerHospital);
+       // hospSpinner = (Spinner) findViewById(R.id.spinnerHospital);
         hospSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -41,8 +41,8 @@
         <item>1alkfjc4</item>
         <item>kamf</item>
     </string-array>
-    <string name="title_activity_county_hospital">CountyHospital</string>
-    <string name="title_activity_doctor_catergories">DoctorCatergories</string>
+    <string name="title_activity_county_hospital">County Hospital</string>
+    <string name="title_activity_doctor_catergories">Doctor Catergories</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -50,7 +50,7 @@
     <string name="title_activity_food_poisoning">FoodPoisoning</string>
     <string name="title_activity_malaria">Malaria</string>
     <string name="title_activity_respiratory">Respiratory</string>
-    <string name="title_activity_stroke__heart__disease">Stroke_Heart_Disease</string>
+    <string name="title_activity_stroke__heart__disease">Stroke and Heart Disease</string>
     <string name="title_activity_pharmacies">Pharmacies</string>
-    <string name="title_activity_book_appointment">BookAppointment</string>
+    <string name="title_activity_book_appointment">Book Appointment</string>
 </resources>
